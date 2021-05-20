@@ -9,8 +9,9 @@ const Answer = ({ word, answerValues }) => {
                 {word &&
                     word
                         .split('')
-                        .map((char) => (
+                        .map((char, i) => (
                             <AnswerCharSpace
+                                key={`${char}-at-${i}`}
                                 char={char}
                                 answerValues={answerValues}
                             />

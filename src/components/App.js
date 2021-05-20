@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { getWord } from '../utils/helper';
 import Answer from './Answer';
 import './App.css';
+import Hangman from './Hangman';
 import Header from './Header';
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
         >
             {word + JSON.stringify(answerValues)}
             <Header />
+            <Hangman />
             <Answer word={word} answerValues={answerValues} />
         </div>
     );
