@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import { drawCircle, drawLine } from '../utils/draw';
 const Hangman = ({ triesLeft }) => {
     const canvas = useRef();
+
+    // rerender when triesLeft changes
     useEffect(() => {
         const ctx = canvas.current.getContext('2d');
         ctx.clearRect(0, 0, 400, 400);
