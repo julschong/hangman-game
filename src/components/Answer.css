@@ -1,4 +1,17 @@
 .answers-container {
+    padding: 50px;
     flex-grow: 1;
     align-items: center;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.history {
+    font-size: large;
+    display: flex;
+    justify-content: start;
+    align-items: baseline;
+    width: 100%;
+    min-height: 4em;
+    border-bottom: 3px solid white;
 }

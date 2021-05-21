@@ -12,13 +12,16 @@ export const drawCircle = (
     ctx.strokeStyle = color;
     ctx.beginPath();
     ctx.arc(ctrx, ctry, r, startAngleInRad, endAngleInRad);
+    ctx.closePath();
     ctx.stroke();
 };
 
 export const drawLine = (ctx, px1, py1, px2, py2, lw = 1, color = 'black') => {
     ctx.lineWidth = lw;
     ctx.strokeStyle = color;
+    ctx.beginPath();
     ctx.moveTo(px1, py1);
     ctx.lineTo(px2, py2);
+    ctx.closePath();
     ctx.stroke();
 };

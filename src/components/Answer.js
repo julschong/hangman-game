@@ -1,10 +1,12 @@
 import React from 'react';
 import './Answer.css';
 import AnswerCharSpace from './AnswerCharSpace';
+import History from './History';
 
 const Answer = ({ word, answerValues }) => {
     return (
         <div className="answers-container flex">
+            <History className="answers flex" answerValues={answerValues} />
             <section className="answers flex">
                 {word &&
                     word
@@ -13,7 +15,9 @@ const Answer = ({ word, answerValues }) => {
                             <AnswerCharSpace
                                 key={`${char}-at-${i}`}
                                 char={char}
-                                answerValues={answerValues}
+                                charArr={
+                                    answerValues ? answerValues.correct : []
+                                }
                             />
                         ))}
             </section>

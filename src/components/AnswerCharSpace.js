@@ -1,11 +1,9 @@
 import React from 'react';
 import './AnswerCharSpace.css';
 
-const AnswerCharSpace = ({ char, answerValues }) => {
+const AnswerCharSpace = ({ char, charArr }) => {
     return (
-        <div className="answer-space">
-            {answerValues.correct.includes(char) ? char : ''}
-        </div>
+        <div className="answer-space">{charArr.includes(char) ? char : ''}</div>
     );
 };
 
