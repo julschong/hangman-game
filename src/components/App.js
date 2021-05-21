@@ -34,7 +34,7 @@ const App = () => {
             onKeyPress={keyPressed}
             tabIndex={-1}
         >
-            {word + JSON.stringify(answerValues)}
+            {word + JSON.stringify(answerValues, null, 2)}
             <Header />
             <Hangman />
             <Answer word={word} answerValues={answerValues} />
