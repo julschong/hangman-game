@@ -8,7 +8,7 @@ const Answer = ({ word, answerValues }) => {
         <div className="answers-container flex">
             <History className="answers flex" answerValues={answerValues} />
             <section className="answers flex">
-                {word &&
+                {word.length &&
                     word
                         .split('')
                         .map((char, i) => (

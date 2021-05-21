@@ -4,7 +4,7 @@ import './App.css';
 import Gameover from './Gameover';
 import Hangman from './Hangman';
 import Header from './Header';
-import { useAxios } from './hooks/useAxios';
+import axios from 'axios';
 
 const App = () => {
     // const app = useRef();
@@ -12,20 +12,27 @@ const App = () => {
     const [answerValues, setAnswerValues] = useState({
         correct: [],
         tried: [],
-        triesLeft: 6
+        triesLeft: 6,
+        word: ''
     });
+
+    const { word } = answerValues;
 
     let gameWon = useRef(0);
 
-    const { data, loading } = useAxios(
-        'https://random-word-api.herokuapp.com/word?number=1'
-    );
-    const word = !loading ? data[0] : '';
+    useEffect(() => {
+        axios
+            .get('https://random-word-api.herokuapp.com/word?number=1')
+            .then((res) => {
+                setAnswerValues({ ...answerValues, word: res.data[0] });
+            });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const keyPressed = (e) => {
         const key = e.key.toLowerCase();
-        if (!loading) {
+        if (word.length && gameWon.current === 0) {
             const { correct, tried, triesLeft } = answerValues;
             if (key.match(/[a-z]/) && !tried.includes(key)) {
                 const newCorrect = word.includes(key)
@@ -58,7 +65,6 @@ const App = () => {
     };
 
     useEffect(() => {
-        // app.current.focus();
         window.addEventListener('keypress', keyPressed);
         return () => {
             window.removeEventListener('keypress', keyPressed);
@@ -66,17 +72,11 @@ const App = () => {
     }, [keyPressed]);
 
     return (
-        <div
-            // ref={app}
-            className="hangman-game"
-            onKeyPress={keyPressed}
-            tabIndex={-1}
-        >
-            {/* {gameWon.current + word + JSON.stringify(answerValues, null, 2)} */}
+        <div className="hangman-game" onKeyPress={keyPressed} tabIndex={-1}>
             <Header />
             <Hangman triesLeft={answerValues.triesLeft} />
             <Answer word={word} answerValues={answerValues} />
-            <Gameover gameWon={gameWon.current} />
+            <Gameover gameWon={gameWon} setAnswerValues={setAnswerValues} />
         </div>
     );
 };
