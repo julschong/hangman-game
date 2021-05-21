@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Answer from './Answer';
 import './App.css';
+import Gameover from './Gameover';
 import Hangman from './Hangman';
 import Header from './Header';
 import { useAxios } from './hooks/useAxios';
@@ -75,6 +76,7 @@ const App = () => {
             <Header />
             <Hangman triesLeft={answerValues.triesLeft} />
             <Answer word={word} answerValues={answerValues} />
+            <Gameover gameWon={gameWon.current} />
         </div>
     );
 };
