@@ -99,7 +99,11 @@ const App = () => {
             <Header />
             <Hangman triesLeft={answerValues.triesLeft} />
             <Answer word={word} answerValues={answerValues} />
-            <Gameover gameWon={gameWon} setAnswerValues={setAnswerValues} />
+            <Gameover
+                gameWon={gameWon}
+                setAnswerValues={setAnswerValues}
+                word={word}
+            />
         </div>
     );
 };

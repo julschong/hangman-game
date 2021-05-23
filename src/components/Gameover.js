@@ -3,7 +3,7 @@ import React from 'react';
 import { GameResult } from '../utils/helper';
 import './Gameover.css';
 
-const Gameover = ({ gameWon, setAnswerValues }) => {
+const Gameover = ({ gameWon, setAnswerValues, word }) => {
     // set to visible only when game is won or lost
     const visibility = {
         visibility:
@@ -35,6 +35,7 @@ const Gameover = ({ gameWon, setAnswerValues }) => {
         <div className="gameover" style={visibility}>
             <div className="gameover-modal flex">
                 <p>{result}</p>
+                <p>{`The word is ${word}`}</p>
                 <button onClick={restart} className="restart-btn">
                     Go again!
                 </button>

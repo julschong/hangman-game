@@ -8,18 +8,19 @@ const Answer = ({ word, answerValues }) => {
         <div className="answers-container flex">
             <History className="answers flex" answerValues={answerValues} />
             <section className="answers flex">
-                {word.length &&
-                    word
-                        .split('')
-                        .map((char, i) => (
-                            <AnswerCharSpace
-                                key={`${char}-at-${i}`}
-                                char={char}
-                                charArr={
-                                    answerValues ? answerValues.correct : []
-                                }
-                            />
-                        ))}
+                {word.length
+                    ? word
+                          .split('')
+                          .map((char, i) => (
+                              <AnswerCharSpace
+                                  key={`${char}-at-${i}`}
+                                  char={char}
+                                  charArr={
+                                      answerValues ? answerValues.correct : []
+                                  }
+                              />
+                          ))
+                    : null}
             </section>
         </div>
     );
