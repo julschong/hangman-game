@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState, useMemo } from 'react';
+import axios from 'axios';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { GameResult } from '../utils/helper';
 import Answer from './Answer';
 import './App.css';
 import Gameover from './Gameover';
 import Hangman from './Hangman';
 import Header from './Header';
-import axios from 'axios';
-import { GameResult } from '../utils/helper';
 
 const App = () => {
     // states that stores game logic
@@ -43,7 +43,6 @@ const App = () => {
         if (answerValues.triesLeft === 0) {
             gameWon.current = GameResult.LOST;
         }
-        console.log(`useMemo ran`);
     }, [answerValues, word]);
 
     // Function called by keyPressed window event listener when user press a key
