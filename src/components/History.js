@@ -6,15 +6,13 @@ const History = ({ answerValues }) => {
         <div className=" answers history">
             Used Characters:
             {answerValues
-                ? answerValues.tried
-                      .sort()
-                      .map((char, i) => (
-                          <AnswerCharSpace
-                              key={`${char}-at-${i}`}
-                              char={char}
-                              charArr={answerValues ? answerValues.tried : []}
-                          />
-                      ))
+                ? answerValues.tried.map((char, i) => (
+                      <AnswerCharSpace
+                          key={`${char}-at-${i}`}
+                          char={char}
+                          charArr={answerValues ? answerValues.tried : []}
+                      />
+                  ))
                 : null}
         </div>
     );

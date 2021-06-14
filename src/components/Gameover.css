@@ -41,3 +41,10 @@
     cursor: pointer;
     transform: scale(0.95);
 }
+
+@media (max-width: 500px) {
+    .gameover-modal {
+        width: 100%;
+        min-width: 0;
+    }
+}
